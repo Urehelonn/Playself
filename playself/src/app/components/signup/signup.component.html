@@ -1,0 +1,91 @@
+<!-- nav bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <span class="navbar-brand mb-0 h1">Sign Up</span>
+</nav>
+<br>
+
+<!-- sign up form -->
+<div class="container">
+  <form [formGroup]="form"
+    (ngSubmit)="signinAttempt(form)">
+
+    {{form.value|json}}
+    <!-- username -->
+    <div class="form-group">
+      <label for="username"> Create User Name:</label>
+      <input
+        formControlName="username"
+        id="username"
+        class="form-control"
+        type="text"
+        (class.warn)="username.touched && username.invalid">
+      <div class="alert alert-danger"
+        *ngIf="username.touched && username.invalid">
+        <span *ngIf="username.errors.required">User name required.</span>
+        <span *ngIf="username.errors.minlength">User name's length must be
+          greater than 3.</span>
+        <span *ngIf="username.errors.usernameNotUnique">This user name is
+          already taken.</span>
+      </div>
+    </div>
+
+    <!-- password -->
+    <div class="form-group">
+      <label for="password">Enter Password:</label>
+      <input
+        formControlName="password"
+        id="password"
+        class="form-control"
+        type="password">
+      <div class="alert alert-danger"
+        *ngIf="password.touched && password.invalid">
+        <span *ngIf="password.errors.required">Password Required.</span>
+        <span *ngIf="password.errors.minlength">Password length must be greater
+          than 5.</span>
+      </div>
+    </div>
+    <!-- password confirm -->
+    <div class="form-group">
+      <label for="passCon">Confirm Password:</label>
+      <input
+        formControlName="passCon"
+        id="passCon"
+        class="form-control"
+        type="password">
+      <div class="alert alert-danger"
+        *ngIf="passCon.touched && passCon.invalid">
+        <span *ngIf="passCon.errors.required">Password confirm is required.</span>
+      </div>
+    </div>
+
+    <!-- confirmation of email doesnt match warning -->
+    <div class="alert alert-warning form-group"
+      *ngIf="passCon.valid && password.valid && form.errors?.passwordNotMatch">
+      Password do not match.
+    </div>
+
+    <!-- email -->
+    <div class="form-group">
+      <label for="email">Enter Email Address:</label>
+      <input
+        formControlName="email"
+        id="email"
+        class="form-control"
+        type="email">
+      <div class="alert alert-danger"
+        *ngIf="email.touched && email.invalid">
+        <span *ngIf="email.errors.required else emailError">Email Required for
+          Registration.</span>
+        <ng-template #emailError>You sure you entered an email address?</ng-template>
+      </div>
+    </div>
+
+    <!-- sub button -->
+    <br>
+    <button type="submit"
+      class="btn btn-primary"
+      [disabled]="form.invalid" >Sign Up</button>
+    <br>
+
+  </form>
+</div>
