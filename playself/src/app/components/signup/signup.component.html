@@ -9,7 +9,6 @@
   <form [formGroup]="form"
     (ngSubmit)="signinAttempt(form)">
 
-    {{form.value|json}}
     <!-- username -->
     <div class="form-group">
       <label for="username"> Create User Name:</label>
@@ -24,8 +23,7 @@
         <span *ngIf="username.errors.required">User name required.</span>
         <span *ngIf="username.errors.minlength">User name's length must be
           greater than 3.</span>
-        <span *ngIf="username.errors.usernameNotUnique">This user name is
-          already taken.</span>
+        <span *ngIf="username.errors.usernameNotUnique">This user name is already taken.</span>
       </div>
     </div>
 

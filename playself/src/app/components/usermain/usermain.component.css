@@ -1,0 +1,44 @@
+body {
+  color: white;
+}
+
+.selftag {
+  width: 40%;
+  border: 3px #6a88ba solid;
+  margin-left: 7%;
+  display: inline-block;
+  text-align: center;
+  min-height: 300px;
+}
+.following-panel {
+  width: 40%;
+  border: 3px #ba776a solid;
+  margin-left: 6%;
+  display: inline-block;
+  text-align: center;
+  min-height: 300px;
+}
+
+.fa-chevron-circle-down {
+  color: white;
+}
+
+#navbarDropdownMenuLink {
+  color: white;
+  font-size: 15pt;
+  margin-top: 15px;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.dropdown-menu {
+  top: 35px;
+  left: -145px;
+}
+
+#rightFloat {
+  margin-top: 10px;
+  right: 20px;
+  float: right;
+  list-style: none;
+}

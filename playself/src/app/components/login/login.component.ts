@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
     //if login succeed
     if(this.loginVarify(loginF.value)){
       // teleport to user main menu
-      
+      this.router.navigate(['./personal/'+loginF.value.username+'/page']);
     }
   }
 

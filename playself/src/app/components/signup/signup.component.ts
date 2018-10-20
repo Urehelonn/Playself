@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { SignupValidators } from './signup.validators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -11,14 +12,14 @@ export class SignupComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(fb:FormBuilder) {
+  constructor(private router: Router, fb:FormBuilder) {
     this.form=fb.group(
       {
         username: new FormControl('',[Validators.required,
         Validators.minLength(3),
       SignupValidators.usernameUnique]),
           password: new FormControl('',[Validators.required,
-            Validators.minLength(3)]),
+            Validators.minLength(5)]),
           passCon: new FormControl('',[Validators.required]),
           email: new FormControl('',[Validators.required,
           Validators.email]),
@@ -46,6 +47,7 @@ export class SignupComponent implements OnInit {
   //  need to travel to login page
   signinAttempt(form){
     console.log(form);
+    this.router.navigate(['./login']);
   }
 
 }

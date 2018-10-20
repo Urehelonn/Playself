@@ -1,5 +1,26 @@
 <!-- nav bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark">
   <span class="navbar-brand mb-0 h1">Playself</span>
+
+  <ul id="rightFloat">
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" routerLink="/personal/:username/page/preferenceSetting">User Preference</a>
+      </div>      
+    </li>
+  </ul>
 </nav>
 <br>
+
+<div class="table">
+  <div class="selftag">
+    <app-self-tag></app-self-tag>
+  </div>
+
+  <div class="following-panel">
+    <app-following-panel></app-following-panel>
+  </div>
+</div>
