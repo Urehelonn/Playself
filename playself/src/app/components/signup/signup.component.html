@@ -3,12 +3,15 @@
   <span class="navbar-brand mb-0 h1">Sign Up</span>
 </nav>
 <br>
-
 <!-- sign up form -->
 <div class="container">
   <form [formGroup]="form"
     (ngSubmit)="signinAttempt(form)">
 
+    <div class="alert alert-warning"
+      *ngIf="usernameNotUnique">
+      <span *ngIf="usernameNotUnique">This user name is already taken.</span>
+    </div>
     <!-- username -->
     <div class="form-group">
       <label for="username"> Create User Name:</label>
@@ -23,7 +26,6 @@
         <span *ngIf="username.errors.required">User name required.</span>
         <span *ngIf="username.errors.minlength">User name's length must be
           greater than 3.</span>
-        <span *ngIf="username.errors.usernameNotUnique">This user name is already taken.</span>
       </div>
     </div>
 
@@ -82,7 +84,7 @@
     <br>
     <button type="submit"
       class="btn btn-primary"
-      [disabled]="form.invalid" >Sign Up</button>
+      [disabled]="form.invalid">Sign Up</button>
     <br>
 
   </form>

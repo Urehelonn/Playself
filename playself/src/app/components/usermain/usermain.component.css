@@ -1,22 +1,32 @@
 body {
   color: white;
+  display:inline-block;
 }
 
+.table{
+  width:100%;height:auto;display:flex;
+}
 .selftag {
+  display:inline-block;
   width: 40%;
   border: 3px #6a88ba solid;
   margin-left: 7%;
-  display: inline-block;
   text-align: center;
   min-height: 300px;
+  padding:20px;
+  border-radius: 20px;
 }
+
 .following-panel {
+  border-radius: 20px;
+  display:inline-block;
   width: 40%;
   border: 3px #ba776a solid;
   margin-left: 6%;
   display: inline-block;
   text-align: center;
   min-height: 300px;
+  padding:20px;
 }
 
 .fa-chevron-circle-down {

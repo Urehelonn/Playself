@@ -3,6 +3,11 @@
   <span class="navbar-brand mb-0 h1">Log In</span>
 </nav>
 <br>
+<div class="container alert alert-warning"
+id="loginFailed"
+*ngIf="loginFailed">
+  Cannot find current user name and password match in library. Please try other match.
+</div>
 <div class="container">
   <form #loginF="ngForm"
     (ngSubmit)="loginAttempt(loginF)">
@@ -11,7 +16,6 @@
       <label for="username">User Name:</label>
       <input
         required
-        minlength="3"
         ngModel
         #username="ngModel"
         name="username"
@@ -22,8 +26,6 @@
       <div class="alert alert-danger"
         *ngIf="username.touched && username.invalid">
         <span *ngIf="username.errors.required">User Name Required.</span>
-        <span *ngIf="username.errors.minlength">User Name must be greater than
-          3.</span>
       </div>
     </div>
 
@@ -31,7 +33,6 @@
       <label for="password">Password:</label>
       <input
         required
-        minlength="5"
         ngModel
         #password="ngModel"
         name="password"
@@ -41,7 +42,6 @@
       <div class="alert alert-danger"
         *ngIf="password.touched && password.invalid">
         <span *ngIf="password.errors.required">Password Required.</span>
-        <span *ngIf="password.errors.minlength">Password must be greater than 5.</span>
       </div>
     </div>
 

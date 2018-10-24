@@ -1,0 +1,35 @@
+<!-- nav bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <span class="navbar-brand mb-0 h1">Administration</span>
+</nav>
+<br>
+
+<div class="container">
+  <div class="alert alert-warning">
+    <span
+      *ngIf="users?.length; else empty">Remove user by click
+    </span>
+    <ng-template #empty class="alert alert-">
+      User list empty
+    </ng-template>
+  </div>
+
+  <div class="card"
+    *ngFor="let user of users">
+    <h3>{{user.id}}</h3>
+    <p>password: {{user.password}}</p>
+    <p>email: {{user.email}}</p>
+    <p>userGID: {{user.userGID}}</p>
+    <p>preference: {{user.preference}}</p>
+    <div>tags:
+      <ul>
+        <li *ngFor="let tag of user.tags">{{tag}}
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-primary"    
+    (click)=removeUser(user)>Remove</button>
+  </div>
+  <button
+    (click)="count()">count</button>
+</div>

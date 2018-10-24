@@ -9,6 +9,7 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <a class="dropdown-item" routerLink="/personal/:username/page/preferenceSetting">User Preference</a>
+        <a class="dropdown-item" routerLink="/login">Log Off</a>
       </div>      
     </li>
   </ul>
@@ -16,11 +17,12 @@
 <br>
 
 <div class="table">
-  <div class="selftag">
-    <app-self-tag></app-self-tag>
+  <div class="selftag form-group">
+    <app-self-tag
+    [user]="gid"></app-self-tag>
   </div>
 
-  <div class="following-panel">
+  <div class="following-panel form-group">
     <app-following-panel></app-following-panel>
   </div>
 </div>

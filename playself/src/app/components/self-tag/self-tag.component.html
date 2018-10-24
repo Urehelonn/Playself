@@ -1,1 +1,19 @@
-<p>this is the selftag section</p>
+<h2>Current me:</h2>
+<!-- this div is to contain tags -->
+<div>
+    <span *ngFor="let tag of tags">
+        <app-tag [tag]="tag"
+            [user]="user">
+        </app-tag>
+    </span>
+</div>
+
+<div id="tag-form">
+    <input
+        #tag
+        id="tagInput"
+        type="text"
+        (keyup.enter)="addTag(tag)">
+    <button
+        (click)="addTag(tag)">Add Tag</button>
+</div>

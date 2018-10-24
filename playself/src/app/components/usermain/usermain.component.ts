@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-usermain',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./usermain.component.css']
 })
 export class UsermainComponent implements OnInit {
+  gid:number;
   displayDropDown = false;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.gid =  parseInt(this.route.snapshot.paramMap.get('auth'));
+    console.log('gid: '+this.gid);
   }
 
   dropdown(){

@@ -11,9 +11,11 @@ import { AppRoutingModule } from './routers/app-routing/app-routing.module';
 import { SelfTagComponent } from './components/self-tag/self-tag.component';
 import { FollowingPanelComponent } from './components/following-panel/following-panel.component';
 import { PreferenceSettingComponent } from './components/preference-setting/preference-setting.component';
+import { TagComponent } from './components/tag/tag.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent, UsermainComponent, SelfTagComponent, FollowingPanelComponent, PreferenceSettingComponent],
+  declarations: [AppComponent, LoginComponent, SignupComponent, UsermainComponent, SelfTagComponent, FollowingPanelComponent, PreferenceSettingComponent, TagComponent, AdminComponent],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
