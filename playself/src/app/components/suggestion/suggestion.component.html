@@ -1,0 +1,25 @@
+<h2>Relative Users' State:</h2>
+
+<h5>with user: {{user.id|titlecase}}</h5>
+
+<div class="card-body">
+    <div class="card"
+        *ngFor="let sug of suggestion">
+        {{sug.id}} :
+        <br>
+        <div *ngIf="sug.tags; else noTag">
+            <span id="tagContent">
+                {{sug.tags[0]}}</span>
+            <div id="tagContent"
+                *ngIf="sug.tags[1]">
+                {{sug.tags[1]}}</div>
+            <div id="tagContent"
+                *ngIf="sug.tags[2]">
+                {{sug.tags[2]}}</div>
+        </div>
+        <ng-template #noTag >
+            <div id="noTag">No Tags</div>
+        </ng-template>
+    </div>
+</div>
+<!--  -->

@@ -1,12 +1,15 @@
 <h2>Current me:</h2>
 <!-- this div is to contain tags -->
-<div>
+<div
+ondrop="drop(event)"
+ondragover="allowDrop(event)">
     <span *ngFor="let tag of tags">
         <app-tag [tag]="tag"
             [user]="user">
         </app-tag>
     </span>
 </div>
+<br>
 
 <div id="tag-form">
     <input
@@ -16,4 +19,13 @@
         (keyup.enter)="addTag(tag)">
     <button
         (click)="addTag(tag)">Add Tag</button>
+</div>
+<br>
+
+<div class="container usedtag">
+    <span>Tag Suggestion: </span>
+    <br>
+    <span id="tagContent"
+    *ngFor="let usedtag of usedtags"
+    (click)="addOldTag(usedtag)">{{usedtag | titlecase}}</span>
 </div>

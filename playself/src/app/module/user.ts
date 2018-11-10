@@ -5,4 +5,6 @@ export class User{
     preference?: any[];
     tags?: string[];
     email:string;
+    usedTag?: string[];
+    following?: number[];
 }

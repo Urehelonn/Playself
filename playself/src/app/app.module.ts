@@ -13,9 +13,10 @@ import { FollowingPanelComponent } from './components/following-panel/following-
 import { PreferenceSettingComponent } from './components/preference-setting/preference-setting.component';
 import { TagComponent } from './components/tag/tag.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { SuggestionComponent } from './components/suggestion/suggestion.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent, UsermainComponent, SelfTagComponent, FollowingPanelComponent, PreferenceSettingComponent, TagComponent, AdminComponent],
+  declarations: [AppComponent, LoginComponent, SignupComponent, UsermainComponent, SelfTagComponent, FollowingPanelComponent, PreferenceSettingComponent, TagComponent, AdminComponent, SuggestionComponent],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]

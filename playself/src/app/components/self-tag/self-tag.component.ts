@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, HostListener } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { User } from '../../module/user';
 
@@ -8,33 +8,40 @@ import { User } from '../../module/user';
   styleUrls: ['./self-tag.component.css']
 })
 export class SelfTagComponent implements OnInit {
-  @Input('user') usergid: number;
-  tags: string[]=[];
-  user: User;  
+  @Input('user')
+  usergid: number;
+  tags: string[] = [];
+  user: User;
+  usedtags: string[];
 
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
     this.getUser();
-    this.tags=this.user.tags;
+    this.tags = this.user.tags;
+    this.usedtags = this.user.usedTag;
   }
 
-  addTag(tag): void{
+  addTag(tag): void {
     console.log(this.tags);
-    if(!this.tags){
-      this.tags=[tag.value];
+    if (!this.tags) {
+      this.tags = [tag.value];
       // console.log('no tags');
+    } else {
+      this.tags.splice(0, 0, tag.value);
     }
-    else{
-      this.tags.splice(0,0,tag.value);
-    }    
-      //save to storage via user
-      this.userService.tagUpdate(this.user, this.tags);
+    //save to storage via user
+    this.userService.tagUpdate(this.user, this.tags);
     // console.log(this.tags);
-    tag.value='';
+    tag.value = '';
   }
 
-  getUser(): User{    
-    return this.user = this.userService.getUserViaGID(this.usergid);
+  addOldTag(oldTag): void{
+    this.user.tags.push(oldTag);
+    this.userService.tagUpdate(this.user, this.user.tags);
+  }
+
+  getUser(): User {
+    return (this.user = this.userService.getUserViaGID(this.usergid));
   }
 }

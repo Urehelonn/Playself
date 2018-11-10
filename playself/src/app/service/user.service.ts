@@ -47,11 +47,38 @@ export class UserService {
 
   tagUpdate(user: User, tags: string[]): boolean {
     // find user index in data
-    let i= this.user.findIndex(x=>x.id==user.id);
-    this.user[i].tags=tags;
+    let i = this.user.findIndex(x => x.id == user.id);
+    this.user[i].tags = tags;
     //update user to local storage
     this.userStorageUpdate(this.user);
     return true;
+  }
+
+  //return true if there are actul tag added to the old tag array
+  addUsedTag(user: User, oldTag: string): boolean {
+    //find user index
+    let i = this.user.findIndex(x => x.id == user.id);
+    // if used tag array empty
+    if (!this.user[i].usedTag) {
+      this.user[i].usedTag = [oldTag];
+      console.log('used tag added to the empty ary');
+      return true;
+    }
+    //if used tag array less than 10, and tag content not same, add to used tag array
+    else if (!this.ifaddedOldTagDuplicate(i, oldTag)) {
+      if (this.user[i].usedTag.length > 10) {
+        this.user[i].usedTag.splice(10, 1);
+      }
+      this.user[i].usedTag.splice(0, 0, oldTag);
+      return true;
+    }
+    return false;
+  }
+  private ifaddedOldTagDuplicate(ind: number, oldTag: string): boolean {
+    for (let i = 0; i < this.user[ind].usedTag.length; i++) {
+      if (this.user[ind].usedTag[i] === oldTag) return true;
+    }
+    return false;
   }
 
   checkUserNameUnique(username: string): boolean {
@@ -86,10 +113,33 @@ export class UserService {
     console.log(this.user);
   }
 
-  removeUser(user: User){
-    let i= this.user.findIndex(x=>x.id==user.id);
-    this.user.splice(i,1);
+  removeUser(user: User) {
+    let i = this.user.findIndex(x => x.id == user.id);
+    this.user.splice(i, 1);
     this.userStorageUpdate(this.user);
     console.log(i);
+  }
+
+  getSuggUser(user: User): User[] {
+    let res = [];
+
+    //get 5 random user add to res
+    let sugLength = 5;
+    //if has less than 5 users
+    sugLength = Math.min(this.user.length, sugLength);
+    for (let i = 0; i < sugLength; i++) {
+      let num = Math.floor(Math.random() * (this.user.length));
+      while (this.contain(res, num)) {
+        num = Math.floor(Math.random() * (this.user.length));
+      }
+      res.push(this.user[num]);
+    }
+    return res;
+  }
+  contain(res: User[], num: number): boolean {
+    for (let i = 0; i < res.length; i++) {
+      if (res[i] === this.user[num]) return true;
+    }
+    return false;
   }
 }

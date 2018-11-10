@@ -1,3 +1,10 @@
-<p>
-    this is the following section
-</p>
+<div class="container card-body">
+    <h3>Following: </h3>
+    <br>
+    <div *ngIf="!followings ;else followings"><h5>No Following People Out There.</h5></div>
+    <div #followings class="card"
+        *ngFor="let following of followings">
+        <span id="tagContent">
+        </span>
+    </div>
+</div>

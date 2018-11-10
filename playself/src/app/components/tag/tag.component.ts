@@ -20,6 +20,9 @@ export class TagComponent implements OnInit {
 
   removeTag(){
     console.log('tag removal attempt with tag: '+this.tagContent);
+    //pass tag as used tag and save to user
+    this.userService.addUsedTag(this.user, this.tagContent);
+    ;
     //find tag index in user's storage
     let i= this.user.tags.findIndex(saved=>{
       return saved===this.tagContent;
@@ -27,7 +30,7 @@ export class TagComponent implements OnInit {
     this.user.tags.splice(i,1);
     console.log(this.user.tags);
     //update user to server
-    this.userService.tagUpdate(this.user, this.user.tags);
+    this.userService.tagUpdate(this.user, this.user.tags);    
   }
 
 }
