@@ -54,6 +54,10 @@ export class SignupComponent implements OnInit {
     } else this.usernameNotUniqueDisplay();
   }
 
+  toLoginPage(){
+    this.router.navigate(['./login']);
+  }
+
   usernameNotUniqueDisplay(){
     this.usernameNotUnique=true;
     setTimeout(() => 

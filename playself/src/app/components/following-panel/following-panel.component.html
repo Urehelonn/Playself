@@ -1,10 +1,22 @@
-<div class="container card-body">
+<div class="container card-body" (click)="showFollowing()">
     <h3>Following: </h3>
     <br>
-    <div *ngIf="!followings ;else followings"><h5>No Following People Out There.</h5></div>
+    <div *ngIf="!followings"><h5>No Following People Out There.</h5></div>
     <div #followings class="card"
         *ngFor="let following of followings">
-        <span id="tagContent">
-        </span>
+        <p>{{following.id}}:</p>
+        <div *ngIf="following.tags; else noTag">
+            <span id="tagContent">
+                {{following.tags[0]|titlecase}}</span>
+            <div id="tagContent"
+                *ngIf="following.tags[1]">
+                {{following.tags[1]|titlecase}}</div>
+            <div id="tagContent"
+                *ngIf="following.tags[2]">
+                {{following.tags[2]|titlecase}}</div>
+        </div>
+        <ng-template #noTag >
+            <div id="noTag">No Tags</div>
+        </ng-template>
     </div>
 </div>

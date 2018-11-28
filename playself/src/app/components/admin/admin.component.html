@@ -27,6 +27,12 @@
         </li>
       </ul>
     </div>
+    <div>following:
+      <ul>
+        <li *ngFor="let follow of user.following">{{follow}}
+        </li>
+      </ul>
+    </div>
     <button class="btn btn-primary"    
     (click)=removeUser(user)>Remove</button>
   </div>

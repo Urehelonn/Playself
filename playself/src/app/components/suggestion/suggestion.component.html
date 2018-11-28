@@ -4,7 +4,11 @@
 
 <div class="card-body">
     <div class="card"
-        *ngFor="let sug of suggestion">
+        *ngFor="let sug of suggestion">        
+        <i class="fas fa-times fa-check"
+        [class.fa-times]="!isFollowing(sug.userGID)"
+        [class.fa-check]="isFollowing(sug.userGID)"
+        (click)="addToFollowing(sug.userGID)"> </i>
         {{sug.id}} :
         <br>
         <div *ngIf="sug.tags; else noTag">

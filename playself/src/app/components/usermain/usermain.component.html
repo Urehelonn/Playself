@@ -8,9 +8,11 @@
         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" routerLink="/personal/:username/page/preferenceSetting">User Preference</a>
+        <a class="dropdown-item"
+          routerLink="/personal/:username/page/preferenceSetting">User
+          Preference</a>
         <a class="dropdown-item" routerLink="/login">Log Off</a>
-      </div>      
+      </div>
     </li>
   </ul>
 </nav>
@@ -18,14 +20,14 @@
 
 <div class="table">
   <div class="selftag form-group">
-    <app-self-tag
-    [user]="gid"></app-self-tag>
+    <app-self-tag [user]="gid"></app-self-tag>
   </div>
 
   <div class="following-panel form-group">
-    <!-- <app-following-panel
-    [user]="gid"></app-following-panel> -->
-    <app-suggestion
-    [user]="gid"></app-suggestion>
+    <app-following-panel [user]="gid"></app-following-panel>
   </div>
+</div>
+
+<div class="suggestion-panel form-group">
+  <app-suggestion [user]="gid"></app-suggestion>
 </div>

@@ -31,6 +31,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  toSignUpPage(){
+    this.router.navigate(['./signup']);
+  }
   //need to import later to check through databse if user exists
   loginVarify(log: { username: string; password: string }): null | number {
     return this.userService.verifyLogin(log.username, log.password);

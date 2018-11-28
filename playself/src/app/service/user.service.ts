@@ -17,11 +17,13 @@ export class UserService {
     return store === null ? (this.user = []) : (this.user = store);
   }
 
-  userStorageUpdate(users) {
+  //pass users, and then upadte these users data into storage;
+  userStorageUpdate(users): boolean {
     localStorage.setItem('userStorage', JSON.stringify(users));
+    return true;
   }
 
-  //return user's gid
+  //return user's gid if valid, else return null
   verifyLogin(id: string, password: string): null | number {
     //prevent the database to be empty
     if (this.user !== null) {
@@ -34,6 +36,7 @@ export class UserService {
     return null;
   }
 
+  //return user if valid, else return null
   getUserViaGID(gid: number): User | null {
     if (this.user !== null) {
       for (let i = 0; i < this.user.length; i++) {
@@ -45,6 +48,7 @@ export class UserService {
     return null;
   }
 
+  //update tag and update user to local storage as well, if succeed, return true, else return false;
   tagUpdate(user: User, tags: string[]): boolean {
     // find user index in data
     let i = this.user.findIndex(x => x.id == user.id);
@@ -141,5 +145,32 @@ export class UserService {
       if (res[i] === this.user[num]) return true;
     }
     return false;
+  }
+
+  ifFollowingGivenUser(user: User, followingId: number){
+    if(!user.following) return false;
+    for(let i=0;i<user.following.length;i++){
+      if(user.following[i]===followingId) return true;      
+    }
+    return false;
+  }
+
+  AddToFollowing(user: User, gid: number){
+    if(!user.following)
+      user.following=[];
+    for(let i=0;i<user.following.length;i++){
+      //if already following, remove from following
+      if(user.following[i]===gid) {
+        user.following.splice(i,1);
+        //update this user into uses in local storage        
+        this.userStorageUpdate(this.user);
+        console.log("remove "+gid);
+        return null;
+      }
+    }
+    user.following.push(gid);
+    //update this user into uses in local storage        
+    this.userStorageUpdate(this.user);    
+    console.log("added "+gid);
   }
 }

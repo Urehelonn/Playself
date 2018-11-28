@@ -21,3 +21,8 @@
     background-color: darkslategray;
     color: white;
 }
+
+.fas{
+    width: 30px;
+    cursor: pointer;
+}

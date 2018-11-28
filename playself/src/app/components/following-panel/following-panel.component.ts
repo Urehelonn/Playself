@@ -8,8 +8,7 @@ import { UserService } from '../../service/user.service';
   styleUrls: ['./following-panel.component.css']
 })
 export class FollowingPanelComponent implements OnInit {
-  @Input('user')
-  usergid;
+  @Input('user') usergid;
   user: User;
   followings: User[];
 
@@ -17,6 +16,7 @@ export class FollowingPanelComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
+    this.followings=[];
     // add following user via gid
     if (this.user.following) {
       for (let i = 0; i < this.user.following.length; i++) {
@@ -27,5 +27,9 @@ export class FollowingPanelComponent implements OnInit {
 
   getUser(): User {
     return (this.user = this.userService.getUserViaGID(this.usergid));
+  }
+
+  showFollowing(){
+    console.log(this.followings);
   }
 }

@@ -23,4 +23,13 @@ export class SuggestionComponent implements OnInit {
   getUser(): User {
     return (this.user = this.userService.getUserViaGID(this.usergid));
   }
+
+  isFollowing(sgid){
+    let res = this.userService.ifFollowingGivenUser(this.user, sgid);
+    return res;
+  }
+
+  addToFollowing(fgid){
+    this.userService.AddToFollowing(this.user, fgid);
+  }
 }
